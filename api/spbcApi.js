@@ -39,13 +39,13 @@ exports.fetchAuthToken = async function() {
 
 exports.postReservation = async function(tokens, parameters) {
       const postData  = {
-          "session": "Tea",
+          "session": "Dinner",
           "alias": null,
           "customMealSession": true,
-          "reservationDateTime": "2022-08-24T16:45",
-          // "partySize": "3",
+          "reservationDateTime": "2022-09-01T21:45",
+          "partySize": "3",
           "numberOfChildren": "0",
-          // "numberOfAdults": "3",
+          "numberOfAdults": "3",
           "returnUrl": "https://test-harvester.go.mbplc.com/restaurants/eastandwestmidlands/pct-test-lab-555045/tablebooking",
           "specialInstructions": "",
           "selectedMenu": "",
@@ -57,7 +57,7 @@ exports.postReservation = async function(tokens, parameters) {
           "utmContent": null
           };
   const mergedData = { ...postData, ...parameters };
-  console.log("mergedData", mergedData);
+  console.log("mergedData", JSON.stringify(mergedData));
   const { statusCode, data, headers } = await curly.post(`${CBORMS_URL}/pub/brands/9/outlets/555045/reservations/reserve`, {
       postFields: JSON.stringify(mergedData),
       httpHeader: [ 
